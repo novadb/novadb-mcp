@@ -70,9 +70,9 @@ export async function setupMcpTypes(
   const personDef = loadDefinition<TypeDefinition>("mcp-person.json");
   const appAreaDef = loadDefinition<AppAreaDefinition>("mcp-test-app-area.json");
 
-  const comment = "MCP test setup";
+  const comment = "MCP-Test setup";
 
-  // Step 1: Create MCP-Company object type
+  // Step 1: Create MCP-Test-Company object type
   const companyTypeResult = await cms.createObjects(
     branch,
     [
@@ -88,7 +88,7 @@ export async function setupMcpTypes(
   ) as CreateObjectsResponse;
   const companyTypeId = companyTypeResult.createdObjectIds[0];
 
-  // Step 2: Create MCP-Person object type
+  // Step 2: Create MCP-Test-Person object type
   const personTypeResult = await cms.createObjects(
     branch,
     [
@@ -104,7 +104,7 @@ export async function setupMcpTypes(
   ) as CreateObjectsResponse;
   const personTypeId = personTypeResult.createdObjectIds[0];
 
-  // Step 3: Create MCP-Company attributes
+  // Step 3: Create MCP-Test-Company attributes
   const companyAttrObjects: CmsObject[] = companyDef.attributes.map((attr) => ({
     meta: { typeRef: TYPE_REF_ATTRIBUTE_DEF },
     values: [
@@ -121,7 +121,7 @@ export async function setupMcpTypes(
     industry: companyAttrResult.createdObjectIds[1],
   };
 
-  // Step 4: Create MCP-Person attributes
+  // Step 4: Create MCP-Test-Person attributes
   const personAttrObjects: CmsObject[] = personDef.attributes.map((attr) => {
     const values: CmsValue[] = [
       { attribute: ATTR_NAME, language: LANG_EN, variant: 0, value: attr.nameEn },
@@ -139,7 +139,7 @@ export async function setupMcpTypes(
       });
     }
 
-    if (attr.allowedTypeRef === "MCP-Company") {
+    if (attr.allowedTypeRef === "MCP-Test-Company") {
       values.push({
         attribute: ATTR_ALLOWED_TYPES,
         language: 0,
