@@ -17,7 +17,7 @@ function getStringValue(obj: CmsObject, attrId: number, langId: number): string 
 }
 
 /**
- * Finds and deletes all existing MCP-* test types, their attributes,
+ * Finds and deletes all existing MCP-Test* test types, their attributes,
  * forms, app areas, and object instances.
  *
  * Uses the CMS API directly (getTypedObjects) instead of the Index API
@@ -29,7 +29,7 @@ export async function cleanupMcpTypes(
   cms: CmsClient,
   branch: string,
 ): Promise<void> {
-  // Step 1: Find existing MCP-* object types via CMS API
+  // Step 1: Find existing MCP-Test* object types via CMS API
   const typeResults = await cms.getTypedObjects(branch, String(TYPE_REF_OBJECT_TYPE), {
     take: 100,
     attributes: String(ATTR_NAME),
@@ -38,11 +38,11 @@ export async function cleanupMcpTypes(
 
   const mcpTypes = (typeResults.objects ?? []).filter((o) => {
     const name = getStringValue(o, ATTR_NAME, LANG_EN);
-    return name?.startsWith("MCP-");
+    return name?.startsWith("MCP-Test");
   });
   const typeIds = mcpTypes.map((o) => o.meta.id!);
 
-  // Step 2: Find existing MCP forms via CMS API
+  // Step 2: Find existing MCP-Test forms via CMS API
   const formResults = await cms.getTypedObjects(branch, String(TYPE_REF_FORM), {
     take: 100,
     attributes: String(ATTR_NAME),
@@ -51,11 +51,11 @@ export async function cleanupMcpTypes(
 
   const mcpForms = (formResults.objects ?? []).filter((o) => {
     const name = getStringValue(o, ATTR_NAME, LANG_EN);
-    return name?.startsWith("MCP");
+    return name?.startsWith("MCP-Test");
   });
   const formIds = mcpForms.map((o) => o.meta.id!);
 
-  // Step 3: Find existing MCP app areas via CMS API
+  // Step 3: Find existing MCP-Test app areas via CMS API
   const appAreaResults = await cms.getTypedObjects(branch, String(TYPE_REF_APP_AREA), {
     take: 100,
     attributes: String(ATTR_NAME),
@@ -64,7 +64,7 @@ export async function cleanupMcpTypes(
 
   const mcpAppAreas = (appAreaResults.objects ?? []).filter((o) => {
     const name = getStringValue(o, ATTR_NAME, LANG_EN);
-    return name?.startsWith("MCP");
+    return name?.startsWith("MCP-Test");
   });
   const appAreaIds = mcpAppAreas.map((o) => o.meta.id!);
 
@@ -122,7 +122,7 @@ export async function cleanupMcpTypes(
   const deleteIds = (ids: number[]) =>
     ids.length > 0
       ? cms.deleteObjects(branch, ids.map(String), {
-          comment: "MCP test cleanup",
+          comment: "MCP-Test cleanup",
         })
       : Promise.resolve();
 

@@ -71,7 +71,7 @@ integrationDescribe("IndexClient (Index API) - Objects", () => {
   });
 
   describe("Complex object filter scenarios", () => {
-    it("filters by MCP-Company object type", async () => {
+    it("filters by MCP-Test-Company object type", async () => {
       const response = await indexClient.searchObjects(String(BRANCH_ID), {
         filter: {
           objectTypeIds: [ctx.companyTypeId],
@@ -85,7 +85,7 @@ integrationDescribe("IndexClient (Index API) - Objects", () => {
       expect(typeof response).toBe("object");
     });
 
-    it("searches for MCP-Person objects by ID filter", async () => {
+    it("searches for MCP-Test-Person objects by ID filter", async () => {
       const response = await indexClient.searchObjects(String(BRANCH_ID), {
         filter: {
           objectTypeIds: [ctx.personTypeId],

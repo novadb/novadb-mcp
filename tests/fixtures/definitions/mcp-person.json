@@ -1,7 +1,7 @@
 {
   "type": {
-    "nameEn": "MCP-Person",
-    "nameDe": "MCP-Person"
+    "nameEn": "MCP-Test-Person",
+    "nameDe": "MCP-Test-Person"
   },
   "attributes": [
     {
@@ -28,12 +28,12 @@
       "nameDe": "Firma",
       "dataType": "ObjRef",
       "required": false,
-      "allowedTypeRef": "MCP-Company"
+      "allowedTypeRef": "MCP-Test-Company"
     }
   ],
   "form": {
-    "nameEn": "Person Details",
-    "nameDe": "Personendetails"
+    "nameEn": "MCP-Test Person Details",
+    "nameDe": "MCP-Test Personendetails"
   },
   "sampleData": {
     "values": {

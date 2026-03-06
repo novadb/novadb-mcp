@@ -1,7 +1,7 @@
 {
   "type": {
-    "nameEn": "MCP-Company",
-    "nameDe": "MCP-Firma"
+    "nameEn": "MCP-Test-Company",
+    "nameDe": "MCP-Test-Firma"
   },
   "attributes": [
     {
@@ -18,8 +18,8 @@
     }
   ],
   "form": {
-    "nameEn": "Company Details",
-    "nameDe": "Firmendetails"
+    "nameEn": "MCP-Test Company Details",
+    "nameDe": "MCP-Test Firmendetails"
   },
   "sampleData": {
     "values": {

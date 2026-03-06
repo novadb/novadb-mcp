@@ -1,6 +1,6 @@
 {
   "name": "novadb-mcp",
-  "version": "1.4.2",
+  "version": "1.5.1",
   "description": "MCP server for NovaDB CMS and Index APIs",
   "type": "module",
   "main": "dist/index.js",
@@ -16,8 +16,7 @@
     "prepare": "tsc",
     "test": "vitest run tests/",
     "test:watch": "vitest tests/",
-    "build:ext": "node scripts/build-claude-extension.mjs",
-    "build:plugin": "node scripts/build-claude-plugin.mjs"
+    "build:ext": "node scripts/build-claude-extension.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",

@@ -24,16 +24,16 @@ async function initContext(): Promise<TestFixtureContext | null> {
     const cms = createCmsClient(cmsApi);
     const branch = String(BRANCH_ID);
 
-    // Clean up any existing MCP-* types from previous runs
+    // Clean up any existing MCP-Test* types from previous runs
     await cleanupMcpTypes(cms, branch);
 
     // Create fresh types, attributes, forms, app area, and sample data
     return await setupMcpTypes(cms, branch);
   } catch (error) {
     console.warn(
-      `[MCP Test Setup] Failed to initialize test fixtures: ${error instanceof Error ? error.message : String(error)}`,
+      `[MCP-Test Setup] Failed to initialize test fixtures: ${error instanceof Error ? error.message : String(error)}`,
     );
-    console.warn("[MCP Test Setup] Tests requiring fixture context will be skipped.");
+    console.warn("[MCP-Test Setup] Tests requiring fixture context will be skipped.");
     return null;
   }
 }
